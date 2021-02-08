@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<meta charset="uft-8">
+	</head>
+	<body>
+		<div>
+			<img id="image" src="image/default.png">
+		</div>
+		<div class="buttons">
+			<button type="button" id="button1" value="left1">立木のポーズ左</button>
+			<button type="button" id="button2" value="right1">立木のポーズ右</button>
+			<button type="button" id="button3" value="left2">英雄2のポーズ左</button>
+			<button type="button" id="button4" value="right2">英雄2のポーズ右</button>
+			<button type="button" id="button5" value="left3">腰振り左</button>
+			<button type="button" id="button6" value="right3">腰振り右</button>
+			<button type="button" id="button_start" value="start">スタート</button>
+			<button type="button" id="button_reset" value="reset">リセット</button>
+		</div>
+		<script>
+			var image = document.getElementById('image');
+			var button1 = document.getElementById('button1');
+			var button2 = document.getElementById('button2');
+			var button3 = document.getElementById('button3');
+			var button4 = document.getElementById('button4');
+			var start = document.getElementById('button_start');
+			var reset = document.getElementById('button_reset');
+			var list =[];
+
+			button1.onmousedown = function(){
+				image.src = "image/left1.png";
+				list.push(button1.value);
+			}
+			button1.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			button2.onmousedown = function(){
+				image.src = "image/right1.png";
+				list.push(button2.value);
+			}
+			button2.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			button3.onmousedown = function(){
+				image.src = "image/left2.png";
+				list.push(button3.value);
+			}
+			button3.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			button4.onmousedown = function(){
+				image.src = "image/right2.png";
+				list.push(button4.value);
+			}
+			button4.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			button5.onmousedown = function(){
+				image.src = "image/left3.png";
+				list.push(button5.value);
+			}
+			button5.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			button6.onmousedown = function(){
+				image.src = "image/right3.png";
+				list.push(button6.value);
+			}
+			button6.onmouseup = function(){
+				image.src = "image/default.png";
+			}
+
+			reset.onmousedown = function(){
+				while (list.length > 0){
+					list.pop();
+				}
+				image.src = "image/default.png";
+			}
+
+			start.onmousedown = function(){
+				var counter = 0;
+				var timerid;
+
+				timerid = setInterval(function(){
+						if (list[counter] === 'left1'){
+							image.src = "image/left1.png";
+						}else if(list[counter] === 'right1'){
+							image.src = "image/right1.png";
+						}else if(list[counter] === 'left2'){
+							image.src = "image/left2.png";
+						}else if(list[counter] === 'right2'){
+							image.src = "image/right2.png";
+						}else if(list[counter] === 'left3'){
+							image.src = "image/left3.png";
+						}else if(list[counter] === 'right3'){
+							image.src = "image/right3.png";
+						}
+					counter++;
+					if (counter>=list.length){
+						clearInterval(timerid);
+					}
+				},200);
+			}	
+		</script>
+</html>
